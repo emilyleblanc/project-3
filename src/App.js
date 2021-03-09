@@ -7,8 +7,12 @@ import DisplayShoppingCart from './DisplayShoppingCart'
 import {useState, useEffect} from 'react'
 
 function App() {
-  const [inventory,setInventory] = useState([])
-  const [shoppingCart, setShoppingCart] = useState([])
+  const [inventory,setInventory] = useState([]);
+  const [shoppingCart, setShoppingCart] = useState([]);
+  const [quantity, setQuantity]= useState('');
+  
+
+
 //  declaring variables to store firebase data
   const dbInventory = firebase.database().ref();
  
@@ -30,20 +34,30 @@ function App() {
     })
   },[]);
   
-  
-  
-  // creates an array called shopping cart and pushes purchased items into it. 
-  
   const handleCart = (purchase) => {
-    shoppingCart.push(purchase)
-    console.log(shoppingCart)
-  }
+    setShoppingCart([...shoppingCart,purchase])
     
+  }
+
+
+
+  const handleRemovePurchase = (purchase) => {
+    const updatedShoppingCart = shoppingCart.filter(item => {
+      return item != purchase
+   })
+   setShoppingCart(updatedShoppingCart);
+  }
+
+
+
+  
   
   return (
 
     <div className="App">
       <Header/>
+
+      {/* start of main */}
       <section className={"gallery wrapper"}>
       {
         inventory.map((yarn)=>{
@@ -58,11 +72,10 @@ function App() {
         })
       }
       </section>
-
+      {/* start of shopping cart section */}
       <section className={'shoppingCart wrapper'}>
 
         <table>
-          {/* <h2>Cart:</h2> */}
           <tr>
             <th>Purchase</th>
             <th>Qty.</th>
@@ -73,12 +86,15 @@ function App() {
           shoppingCart.map((items)=>{
             return<DisplayShoppingCart
             purchaseName = {items.products.product_name}
-            purchasePrice = {items.products.price}/>
+            purchasePrice = {items.products.price}
+            removeFromCart = {() => handleRemovePurchase(items)}
+            />
           })
         }
 
         </table>
       </section>
+      <footer>created at <span><a href="https://junocollege.com/">Juno College</a></span> by Emily</footer>
     </div>
     );
   }
