@@ -4,10 +4,10 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 *, *:before, *:after {box-sizing: inherit}
 
-.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+/* Base Styles */
 
  img{max-width:100%;height:auto;}
-
+ 
  html{font-size: 62.5%;} 
  body{
     color: #444242;
@@ -53,44 +53,40 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
     font-size: 3rem;
     margin-bottom: 0;
   }
+  
+    li{
+      text-align: center;
+      margin:.5em;
+      padding: .5em;
+      background-color: rgba(255,255,255, 0.4);
+      flex-grow: 1;
+    }
+  
+    li p:first-of-type{
+      margin: 0.3rem;
+    }
+    li p:last-of-type{
+      margin-top: 0.3rem;
+    }
+  
+    button{
+      border: 3px solid #DAECED;
+      padding: 0.5em 2em;
+      border-radius: 5rem;
+      background-color: transparent;
+      transition: ease-in-out .3s;
+      
+    }
+  
+    button:hover,
+    button:focus{
+      background-color:#B62A3D;
+      border: 3px solid #B62A3D;
+      color: white;
+    }
 
 
-
-  ul{
-    display: flex;
-
-  }
-
-  li{
-    text-align: center;
-    margin:.5em;
-    padding: .5em;
-    background-color: rgba(255,255,255, 0.4);
-    flex-grow: 1;
-  }
-
-  li p:first-of-type{
-    margin: 0.3rem;
-  }
-  li p:last-of-type{
-    margin-top: 0.3rem;
-  }
-
-  button{
-    border: 3px solid #DAECED;
-    padding: 0.5em 2em;
-    border-radius: 5rem;
-    background-color: transparent;
-    transition: ease-in-out .3s;
-    
-  }
-
-  button:hover,
-  button:focus{
-    background-color:#B62A3D;
-    border: 3px solid #B62A3D;
-    color: white;
-  }
+    /* Styles Shopping Cart  */
 
  .shoppingCart{
    border-top: 1px solid #B62A3D;
@@ -100,6 +96,8 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
  table{
    width: 100%;
   }
+
+  /* Footer styles */
 
   footer{
     background-color: #B62A3D;
@@ -114,7 +112,7 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
     
   }
 
-  /* media queries */
+  /* Media Queries */
 
   @media(max-width:780px){
     h1{
@@ -135,6 +133,7 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
   @media(max-width:375px){
     h1{
       font-size:6rem;
+      letter-spacing: 15px;
     }
 
     h1 span{

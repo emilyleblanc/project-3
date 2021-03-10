@@ -1,5 +1,7 @@
 // DisplayInventory.js
 
+// DISPLAY INVENTORY COMPONENT DISPLAY DESCRIPTIVE INFORMATION ABOUT THE PRODUCTS FOR SALE. ALL DATA IS COLLECTED FROM FIREBASE. 
+
 const DisplayInventory = (props)=> {
     return(
         

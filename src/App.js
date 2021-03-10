@@ -25,10 +25,10 @@ useEffect(()=>{
     })
   },[]);
 
-  // handleCart is fired when user presses "Add to Cart"
-  // this function stores the purchased item in a useState function to display product name, price and quantityin the shopping cart
+  // handleAddInventoryToCart is fired when user presses "Add to Cart"
+  // this function stores the clicked item in a useState function to display product name, price and quantity in the shopping cart section
   
-  const handleCart = (purchase) => {
+  const handleAddInventoryToCart = (purchase) => {
     const newCart = {...shoppingCart};
     if(newCart[purchase.uniqueKey]){
       const cartItem = newCart[purchase.uniqueKey];
@@ -42,8 +42,9 @@ useEffect(()=>{
     }
     setShoppingCart(newCart)
   }
+
     return (
-  
+    
       <div className="App">
         {/* START OF HEADER */}
         <header className="wrapper">
@@ -53,6 +54,8 @@ useEffect(()=>{
         {/* START OF MAIN */}
         <main>
           <section className={"gallery wrapper"}>
+
+        {/* MAPPING THROUGH INVENTORY AND APPLYING PROPERTIES TO ADD TO PAGE */}
         {
           inventory.map((yarn)=>{
             return <DisplayInventory 
@@ -62,7 +65,7 @@ useEffect(()=>{
             price={yarn.products.price}
             image={yarn.products.image}
             altTag={yarn.products.alt_tag}
-            addToCart={() => handleCart(yarn)}
+            addToCart={() => handleAddInventoryToCart(yarn)}
             />
           })
         }
@@ -76,7 +79,9 @@ useEffect(()=>{
               <th>Purchase</th>
               <th>Qty.</th>
               <th>Price</th>
-            </tr>   
+            </tr>  
+
+         {/* MAPPING THROUGH SHOPPING CART ITEMS AND CREATING PROPERTIES TO DISPLAY */}
   
         {
           Object.values(shoppingCart).map((item)=>{
