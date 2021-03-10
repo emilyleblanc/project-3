@@ -86,6 +86,7 @@ function App() {
           productName={yarn.products.product_name}
           price={yarn.products.price}
           image={yarn.products.image}
+          altTag={yarn.products.alt_tag}
           addToCart={() => handleCart(yarn)}
           />
         })

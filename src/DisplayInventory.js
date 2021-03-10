@@ -3,7 +3,7 @@
 const DisplayInventory = (props)=> {
     return(
         <li>
-            <img src={props.image}/>
+            <img src={props.image} alt={props.altTag}/>
             <h2>{props.productName}</h2>
             <p>{props.fiber}</p>
             <p>{`$${props.price}`}</p>
