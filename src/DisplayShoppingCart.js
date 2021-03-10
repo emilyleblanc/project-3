@@ -11,7 +11,7 @@ const ShoppingCart = (props) => {
                 <th><button onClick={props.removeFromCart}>{`remove`}</button></th>
             </tr>
     )
-};
+};git 
             
 
 export default ShoppingCart;
