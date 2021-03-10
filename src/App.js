@@ -9,7 +9,6 @@ import {useState, useEffect} from 'react'
 function App() {
   const [inventory,setInventory] = useState([]);
   const [shoppingCart, setShoppingCart] = useState({});
-  const [quantity, setQuantity]= useState('');
   
 
 
@@ -107,6 +106,7 @@ function App() {
             const {quantity, inventoryItem} = item;
             return<DisplayShoppingCart
             purchaseName = {inventoryItem.products.product_name}
+            quantity = {quantity}
             purchasePrice = {inventoryItem.products.price}
             removeFromCart = {() => handleRemovePurchase(inventoryItem.uniqueKey)}
             />
