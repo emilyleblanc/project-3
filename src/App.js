@@ -8,7 +8,7 @@ import {useState, useEffect} from 'react'
 
 function App() {
   const [inventory,setInventory] = useState([]);
-  const [shoppingCart, setShoppingCart] = useState([]);
+  const [shoppingCart, setShoppingCart] = useState({});
   const [quantity, setQuantity]= useState('');
   
 
@@ -31,13 +31,32 @@ function App() {
         })
       }
       setInventory(yarnBag)
+      console.log(yarnBag);
     })
   },[]);
   
   const handleCart = (purchase) => {
-    setShoppingCart([...shoppingCart,purchase])
+    // increase the value of quantity by one when pushed to page
+    const newCart = {...shoppingCart};
+    if(newCart[purchase.uniqueKey]){
+
+      const cartItem = newCart[purchase.uniqueKey];
+      cartItem.quantity = cartItem.quantity + 1;
+    
+    }else{
+      newCart[purchase.uniqueKey] = {
+        quantity:1,
+        inventoryItem:purchase
+      }
+    }
+    // 2.increase the value of quantiy by one when handle cart is called
+    setShoppingCart(newCart)
+    console.log(newCart);
+    // instead of shopping cart adding purchase. maybe it adds the quantity property?
     
   }
+  // 3. put the quantity on the page
+  // 4.create a prop and pass to component. 
 
 
 
@@ -83,11 +102,12 @@ function App() {
           </tr>   
 
       {
-          shoppingCart.map((items)=>{
+          Object.values(shoppingCart).map((item)=>{
+            const {quantity, inventoryItem} = item;
             return<DisplayShoppingCart
-            purchaseName = {items.products.product_name}
-            purchasePrice = {items.products.price}
-            removeFromCart = {() => handleRemovePurchase(items)}
+            purchaseName = {inventoryItem.products.product_name}
+            purchasePrice = {inventoryItem.products.price}
+            removeFromCart = {() => handleRemovePurchase(inventoryItem.uniqueKey)}
             />
           })
         }
