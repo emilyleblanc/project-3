@@ -13,13 +13,13 @@ function App() {
 
 
 //  declaring variables to store firebase data
-  const dbInventory = firebase.database().ref();
- 
-  
-  
-  
-  // on mount the inventory data from firebase is stored in an array called yarnBag
-  useEffect(()=>{
+
+
+
+
+// on mount the inventory data from firebase is stored in an array called yarnBag
+useEffect(()=>{
+    const dbInventory = firebase.database().ref();
     dbInventory.on('value',(data)=>{
       const yarnData = data.val()
       const yarnBag = []
@@ -61,7 +61,7 @@ function App() {
 
   const handleRemovePurchase = (purchase) => {
     const updatedShoppingCart = shoppingCart.filter(item => {
-      return item != purchase
+      return item !== purchase
    })
    setShoppingCart(updatedShoppingCart);
   }
