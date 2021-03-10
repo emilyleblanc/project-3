@@ -2,6 +2,7 @@
 
 const DisplayInventory = (props)=> {
     return(
+        
         <li>
             <img src={props.image} alt={props.altTag}/>
             <h2>{props.productName}</h2>

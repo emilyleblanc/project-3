@@ -1,7 +1,6 @@
 
 import './App.css';
 import firebase from './firebase'
-import Header from './Header'
 import DisplayInventory from './DisplayInventory'
 import DisplayShoppingCart from './DisplayShoppingCart'
 import {useState, useEffect} from 'react'
@@ -9,15 +8,8 @@ import {useState, useEffect} from 'react'
 function App() {
   const [inventory,setInventory] = useState([]);
   const [shoppingCart, setShoppingCart] = useState({});
-  
-
-
-//  declaring variables to store firebase data
-
-
-
-
-// on mount the inventory data from firebase is stored in an array called yarnBag
+ 
+// On mount the inventory of yarn product data from firebase is stored in an array called yarnBag
 useEffect(()=>{
     const dbInventory = firebase.database().ref();
     dbInventory.on('value',(data)=>{
@@ -30,15 +22,15 @@ useEffect(()=>{
         })
       }
       setInventory(yarnBag)
-      console.log(yarnBag);
     })
   },[]);
-  
+
+  // handleCart is fired when user presses "Add to Cart"
+  // this function stores the purchased item in a useState function to display product name, price and quantityin the shopping cart
   const handleCart = (purchase) => {
-    // increase the value of quantity by one when pushed to page
+    
     const newCart = {...shoppingCart};
     if(newCart[purchase.uniqueKey]){
-
       const cartItem = newCart[purchase.uniqueKey];
       cartItem.quantity = cartItem.quantity + 1;
     
@@ -48,60 +40,53 @@ useEffect(()=>{
         inventoryItem:purchase
       }
     }
-    // 2.increase the value of quantiy by one when handle cart is called
     setShoppingCart(newCart)
-    console.log(newCart);
-    // instead of shopping cart adding purchase. maybe it adds the quantity property?
+  }
+  
+    const handleRemovePurchase = (purchase) => {
+      const updatedShoppingCart = shoppingCart.filter(item => {
+        return item !== purchase
+     })
+     setShoppingCart(updatedShoppingCart);
+    }
     
-  }
-  // 3. put the quantity on the page
-  // 4.create a prop and pass to component. 
-
-
-
-  const handleRemovePurchase = (purchase) => {
-    const updatedShoppingCart = shoppingCart.filter(item => {
-      return item !== purchase
-   })
-   setShoppingCart(updatedShoppingCart);
-  }
-
-
-
+    return (
   
+      <div className="App">
+        {/* START OF HEADER */}
+        <header className="wrapper">
+              <h1>Knit <span>+</span> Pearl</h1>
+        </header>
+       
+        {/* START OF MAIN */}
+        <main>
+          <section className={"gallery wrapper"}>
+        {
+          inventory.map((yarn)=>{
+            return <DisplayInventory 
+            key={yarn.uniqueKey}
+            fiber={yarn.products.fiber}
+            productName={yarn.products.product_name}
+            price={yarn.products.price}
+            image={yarn.products.image}
+            altTag={yarn.products.alt_tag}
+            addToCart={() => handleCart(yarn)}
+            />
+          })
+        }
+        </section>
   
-  return (
-
-    <div className="App">
-      <Header/>
-
-      {/* start of main */}
-      <section className={"gallery wrapper"}>
-      {
-        inventory.map((yarn)=>{
-          return <DisplayInventory 
-          key={yarn.uniqueKey}
-          fiber={yarn.products.fiber}
-          productName={yarn.products.product_name}
-          price={yarn.products.price}
-          image={yarn.products.image}
-          altTag={yarn.products.alt_tag}
-          addToCart={() => handleCart(yarn)}
-          />
-        })
-      }
-      </section>
-      {/* start of shopping cart section */}
-      <section className={'shoppingCart wrapper'}>
-
-        <table>
-          <tr>
-            <th>Purchase</th>
-            <th>Qty.</th>
-            <th>Price</th>
-          </tr>   
-
-      {
+        {/* START OF SHOPPING CART SECTION */}
+  
+        <section className={'shoppingCart wrapper'}>
+          <table>
+            <tr>
+              <th>Purchase</th>
+              <th>Qty.</th>
+              <th>Price</th>
+            </tr>   
+  
+        {
           Object.values(shoppingCart).map((item)=>{
             const {quantity, inventoryItem} = item;
             return<DisplayShoppingCart
@@ -112,14 +97,31 @@ useEffect(()=>{
             />
           })
         }
+            </table>
+          </section>
+        </main>
+  
+        {/* START OF FOOTER */}
+  
+        <footer>created at <span><a href="https://junocollege.com/">Juno College</a></span> by Emily</footer>
+      </div>
+      );
+    }
+    export default App;
+    
+    
+   
+    
 
-        </table>
-      </section>
-      <footer>created at <span><a href="https://junocollege.com/">Juno College</a></span> by Emily</footer>
-    </div>
-    );
-  }
-  export default App;
+
+  
+ 
+
+
+
+
+
+  
         
 
    
