@@ -27,8 +27,8 @@ useEffect(()=>{
 
   // handleCart is fired when user presses "Add to Cart"
   // this function stores the purchased item in a useState function to display product name, price and quantityin the shopping cart
+  
   const handleCart = (purchase) => {
-    
     const newCart = {...shoppingCart};
     if(newCart[purchase.uniqueKey]){
       const cartItem = newCart[purchase.uniqueKey];
@@ -42,14 +42,6 @@ useEffect(()=>{
     }
     setShoppingCart(newCart)
   }
-  
-    const handleRemovePurchase = (purchase) => {
-      const updatedShoppingCart = shoppingCart.filter(item => {
-        return item !== purchase
-     })
-     setShoppingCart(updatedShoppingCart);
-    }
-    
     return (
   
       <div className="App">
@@ -93,7 +85,6 @@ useEffect(()=>{
             purchaseName = {inventoryItem.products.product_name}
             quantity = {quantity}
             purchasePrice = {inventoryItem.products.price}
-            removeFromCart = {() => handleRemovePurchase(inventoryItem.uniqueKey)}
             />
           })
         }
