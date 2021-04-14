@@ -116,15 +116,29 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
   transition: all 0.3s ease-in;
  }
 
+
+
  .openMenu{
   position: fixed;
   top: 0;
   right: 0;
-   width: 20%;
+   width: 40%;
    padding: 3em;
    background-color: #DAECED;
    height: 100vh;
    transition: all 0.3s ease-in;
+   text-align: center;
+ }
+
+
+ .openMenu button{
+  background-color: #B62A3D;
+  color: #DAECED;
+ }
+
+ .openMenu button:hover{
+   background-color: transparent;
+   color: #444242;
  }
  
  table{

@@ -52,24 +52,26 @@ function App() {
         },
       }
     }
-    
-    const totalsAddedTogether = document.querySelectorAll('#totalPurchases');
-    
-     const array = []
-     // turn nodeList into an array and iterate through the array 
-    Array.from(totalsAddedTogether).forEach((total)=>{
-     //  collect the integer values of each total in the shoppingCart
-      const parsedTotal = parseInt(total.textContent)
-     //  push to the array
-      array.push(parsedTotal);
-    });
- 
-   //  determine the sum of that array
-     const sum = array.reduce(function(a, b, c){
-     return a + b + c;
-     }, 0);
 
-     console.log(sum)
+    // THIS CODE GIVES ME THE SUM OF ALL THE SHOPPING CART ITEMS IN THE CONSOLE. NEXT STEP PASS THIS INFORMATION TO RENDER IN THE DOM
+    
+  //   const totalsAddedTogether = document.querySelectorAll('#totalPurchases');
+    
+  //    const array = []
+  //    // turn nodeList into an array and iterate through the array 
+  //   Array.from(totalsAddedTogether).forEach((total)=>{
+  //    //  collect the integer values of each total in the shoppingCart
+  //     const parsedTotal = parseInt(total.textContent)
+  //    //  push to the array
+  //     array.push(parsedTotal);
+  //   });
+ 
+  //  //  determine the sum of that array
+  //    const sum = array.reduce(function(a, b, c){
+  //    return a + b + c;
+  //    }, 0);
+
+  //    console.log(sum)
     
     setShoppingCart(newCart)
   }
@@ -167,8 +169,8 @@ function App() {
               <tr>
                 <th>Total:</th>
                 <td></td>
-
               </tr>
+
 
           
           </table>
