@@ -7,7 +7,8 @@ const ShoppingCart = (props) => {
             <tr>
                 <td>{props.purchaseName}</td>
                 <td>{props.quantity}</td>
-                <td>{`$${props.purchasePrice}`}</td>
+                <td id="totalPurchases">{props.purchasePrice}</td>
+                <button onClick ={props.remove}>remove</button>
             </tr>
     )
 };
