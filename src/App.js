@@ -76,12 +76,6 @@ function App() {
     setShoppingCart(newCart)
   }
 
-  // const handleRemoveFromCart = () => {
-  //   console.log('clicked')
-  //   console.log(newCart)
-  //   // return newCart[purchase.quantity];
-  // };
-
   const slideOutMenu = () => {
     document.getElementById('shoppingCart').classList.remove('shoppingCart');
     document.getElementById('shoppingCart').classList.add('openMenu');
@@ -144,8 +138,8 @@ function App() {
         <section 
         className={'shoppingCart wrapper'}
         id={'shoppingCart'}
-        onClick = {closeMenu}
         >
+          <div onClick = {closeMenu}><i class="fas fa-times"></i></div>
           <table>
               <tr>
                 <th>Purchase</th>

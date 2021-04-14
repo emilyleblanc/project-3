@@ -116,6 +116,25 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
   transition: all 0.3s ease-in;
  }
 
+ .openMenu i {
+  content: "\f00d";
+  font-size: 2.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 3rem;
+  cursor: pointer;
+}
+
+.openMenu i:hover,
+.openMenu i:focus{
+  color: #B62A3D;
+  transition: color 0.2s ease-in;
+}
+   
+  
+
+
 
 
  .openMenu{
