@@ -3,7 +3,9 @@ import './App.css';
 import firebase from './firebase'
 import DisplayInventory from './DisplayInventory'
 import DisplayShoppingCart from './DisplayShoppingCart'
+import SearchBar from './SearchBar'
 import { useState, useEffect } from 'react'
+
 
 function App() {
   const [inventory, setInventory] = useState([]);
@@ -88,6 +90,26 @@ function App() {
 
   }
 
+  const handleFilter = (filter) => {
+    console.log('handle filter');
+    console.log('our filter is :', filter);
+    console.log(inventory);
+    inventory.forEach((fiber)=>{
+        console.log(fiber.products.fiber);
+        let currentfiber = fiber.products.fiber;
+        console.log(currentfiber == filter)
+      })
+
+      const filteredInvetory = inventory.filter((result)=>{
+          let currentfiber = result.products.fiber;
+          return currentfiber == filter;
+        })
+        
+        setInventory(filteredInvetory)
+  }
+        
+
+
   
    
 
@@ -96,6 +118,8 @@ function App() {
 
     <div className="App">
       <nav>
+        <SearchBar
+        handleFilter = {(filter)=>handleFilter(filter)}/>
         <ul>
           <li><a href="#">
             <i class="fas fa-shopping-bag"
