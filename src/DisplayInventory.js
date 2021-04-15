@@ -18,5 +18,5 @@ const DisplayInventory = (props)=> {
                 
 
 
-export default DisplayInventory
+export default DisplayInventory;
             
