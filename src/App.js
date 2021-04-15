@@ -122,10 +122,8 @@ function App() {
         <SearchBar
         handleFilter = {(filter)=>handleFilter(filter)}/>
         <ul>
-          <li><a href="#">
-            <i className="fas fa-shopping-bag"
+          <li><i className="fas fa-shopping-bag"
             onClick = {slideOutMenu}></i>
-            </a>
           </li>
         </ul>
       </nav>
