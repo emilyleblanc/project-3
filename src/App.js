@@ -192,13 +192,6 @@ function App() {
           </table>
         </section>
       </main>
-
-
-          
-
-      {/* START OF FOOTER */}
-      <footer>created at <span><a href="https://junocollege.com/">Juno College</a></span> by Emily</footer>
-
     </div>
   );
 }
