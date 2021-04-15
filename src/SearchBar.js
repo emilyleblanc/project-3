@@ -16,7 +16,7 @@ const SearchBar = (props) => {
         props.handleFilter(filter);
     }
 
-    return (<div>
+    return (<div className="searchBar">
         <p>Search by Fiber:</p>
         <button onClick = {handleBambooClick}>Bamboo</button>
         <button onClick = {handleBlendClick}>Acrylic/Wool</button>

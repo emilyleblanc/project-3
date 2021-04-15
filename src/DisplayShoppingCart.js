@@ -4,12 +4,11 @@
 
 const ShoppingCart = (props) => {
     return(
-            <tbody>
+            <tr>
                 <td>{props.purchaseName}</td>
                 <td>{props.quantity}</td>
                 <td id="totalPurchases">{props.purchasePrice}</td>
-                <button onClick ={props.remove}>remove</button>
-            </tbody>
+            </tr>
     )
 };
             

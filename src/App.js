@@ -164,13 +164,15 @@ function App() {
         className={'shoppingCart wrapper'}
         id={'shoppingCart'}
         >
-          <div onClick = {closeMenu}><i class="fas fa-times"></i></div>
+          <div onClick = {closeMenu}><i className="fas fa-times"></i></div>
           <table>
-            <thead>
+            <tbody>
+              <tr>
                 <th>Purchase</th>
                 <th>Qty.</th>
                 <th>Price</th>
-            </thead>
+
+              </tr>
 
               {/* MAPPING THROUGH SHOPPING CART ITEMS AND CREATING PROPERTIES TO DISPLAY */}
 
@@ -188,6 +190,7 @@ function App() {
                 <th>Total:</th>
                 <td>{`$${total}.00`}</td>
               </tr>
+            </tbody>
           </table>
         </section>
       </main>
