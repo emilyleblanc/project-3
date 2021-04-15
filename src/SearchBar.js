@@ -9,8 +9,8 @@ const SearchBar = (props) => {
     return (<div>
         <p>Select by Type:</p>
         <button onClick = {handleBambooClick}>Bamboo</button>
-        <button>Acrylic/Wool</button>
-        <button>Cotton</button>
+        <button onClick = {handleBlendClick}>Acrylic/Wool</button>
+        <button onClick = {handleWoolClick}>Wool</button>
     </div>)
 }
 
