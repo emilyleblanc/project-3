@@ -122,10 +122,8 @@ function App() {
         <SearchBar
         handleFilter = {(filter)=>handleFilter(filter)}/>
         <ul>
-          <li><a href="#">
-            <i class="fas fa-shopping-bag"
+          <li><i className="fas fa-shopping-bag"
             onClick = {slideOutMenu}></i>
-            </a>
           </li>
         </ul>
       </nav>
@@ -164,12 +162,14 @@ function App() {
         className={'shoppingCart wrapper'}
         id={'shoppingCart'}
         >
-          <div onClick = {closeMenu}><i class="fas fa-times"></i></div>
+          <div onClick = {closeMenu}><i className="fas fa-times"></i></div>
           <table>
+            <tbody>
               <tr>
                 <th>Purchase</th>
                 <th>Qty.</th>
                 <th>Price</th>
+
               </tr>
 
               {/* MAPPING THROUGH SHOPPING CART ITEMS AND CREATING PROPERTIES TO DISPLAY */}
@@ -178,9 +178,9 @@ function App() {
                 Object.values(shoppingCart).map((item) => {
                   const { quantity, inventoryItem, total} = item;
                   return <DisplayShoppingCart
-                    purchaseName={inventoryItem.products.product_name}
-                    quantity={quantity}
-                    purchasePrice={total}
+                  purchaseName={inventoryItem.products.product_name}
+                  quantity={quantity}
+                  purchasePrice={total}
                   />
                 })
               }
@@ -188,13 +188,13 @@ function App() {
                 <th>Total:</th>
                 <td>{`$${total}.00`}</td>
               </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
 
 
           
-          </table>
-          <button>Check Out</button>
-        </section>
-      </main>
 
       {/* START OF FOOTER */}
       <footer>created at <span><a href="https://junocollege.com/">Juno College</a></span> by Emily</footer>
