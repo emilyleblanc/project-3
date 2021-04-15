@@ -31,15 +31,26 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
  /* Nav Styles */
 
- nav li{
-  text-align:right;
-  background-color: rgba(255,255,255, 0);
- }
+nav{
+  display: flex;
+  justify-content: space-around;
+}
 
- nav a{
+ nav i{
    font-size: 3rem;
    color: #B62A3D;
  }
+
+ .searchBar p{
+   margin-bottom: 0;
+   font-weight: 900;
+ }
+ .searchBar button{
+   padding: 0.3em;
+   margin: 2rem;
+   background-color: #DAECED;
+  }
+
 
 
  /* Header Styles*/
