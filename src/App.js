@@ -97,12 +97,12 @@ function App() {
     inventory.forEach((fiber)=>{
         console.log(fiber.products.fiber);
         let currentfiber = fiber.products.fiber;
-        console.log(currentfiber == filter)
+        console.log(currentfiber === filter)
       })
 
       const filteredInvetory = inventory.filter((result)=>{
           let currentfiber = result.products.fiber;
-          return currentfiber == filter;
+          return currentfiber === filter;
         })
         
         setInventory(filteredInvetory)
