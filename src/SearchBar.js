@@ -2,15 +2,25 @@
 
 const SearchBar = (props) => {
     const handleBambooClick = () => {
-        console.log('bamboo clicked');
-        const filter = 'bamboo';
+        const filter = "bamboo";
         props.handleFilter(filter);
     }
+
+    const handleBlendClick = () => {
+        const filter = "acrylic,wool";
+        props.handleFilter(filter);
+    }
+
+    const handleWoolClick = () => {
+        const filter = "merino wool";
+        props.handleFilter(filter);
+    }
+
     return (<div>
-        <p>Select by Type:</p>
+        <p>Search by Fiber:</p>
         <button onClick = {handleBambooClick}>Bamboo</button>
-        <button>Acrylic/Wool</button>
-        <button>Wool</button>
+        <button onClick = {handleBlendClick}>Acrylic/Wool</button>
+        <button onClick = {handleWoolClick}>Wool</button>
     </div>)
 }
 
