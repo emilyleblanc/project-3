@@ -41,9 +41,7 @@ function App() {
       const cartItem = newCart[purchase.uniqueKey];
       cartItem.quantity = cartItem.quantity + 1;
       cartItem.total = cartItem.total + purchase.products.price;
-      // get nodeList of table elements
-      
-    } else {
+      } else {
       newCart[purchase.uniqueKey] = {
         quantity: 1,
         inventoryItem: purchase,
@@ -56,8 +54,6 @@ function App() {
     // THIS CODE GIVES ME THE SUM OF ALL THE SHOPPING CART ITEMS IN THE CONSOLE. NEXT STEP PASS THIS INFORMATION TO RENDER IN THE DOM
     
     const totalsAddedTogether = document.querySelectorAll('#totalPurchases');
-
-    console.log(totalsAddedTogether)
     
      const array = []
      console.log('array:', array)
@@ -70,10 +66,8 @@ function App() {
     });
  
    //  determine the sum of that array
+   const sum = array.reduce((accumulator, currentValue) => accumulator + currentValue, purchase.products.price);
     
-     const sum = array.reduce((accumulator, currentValue) => accumulator + currentValue, purchase.products.price);
-
-     console.log(sum);
      
      setShoppingCart(newCart)
      setTotal(sum);
@@ -92,29 +86,14 @@ function App() {
   }
 
   const handleFilter = (filter) => {
-    console.log('handle filter');
-    console.log('our filter is :', filter);
-    console.log(inventory);
-    inventory.forEach((fiber)=>{
-        let currentfiber = fiber.products.fiber;
-        console.log(currentfiber === filter)
-      })
-
-      const filteredInventory = inventory.filter((result)=>{
-          let currentfiber = result.products.fiber;
-          console.log(currentfiber)
-          return currentfiber === filter;
-        })
-        
-        setInventory(filteredInventory)
+    const filteredInventory = inventory.filter((fiber)=>{
+      let currentfiber = fiber.products.fiber;
+      return currentfiber === filter;
+    })
+    console.log('inventory:',filteredInventory)
+    setInventory(filteredInventory);
   }
-        
-
-
   
-   
-
-
   return (
 
     <div className="App">
