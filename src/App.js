@@ -82,19 +82,24 @@ function App() {
 
   }
 
-  // const handleFilter = (filter) => {
-  //   const filteredInventory = inventory.filter((fiber)=>{
-  //     let currentfiber = fiber.products.fiber;
-  //     return currentfiber === filter;
-  //   })
-  //   setInventory(filteredInventory);
-  // }
+  
+  const handleFilterByFiber= (fiberSelection) => {
+    console.log('inventory',inventory);
+    const copyOfAllInventory = [...inventory];
+    console.log(copyOfAllInventory);
+    // filter out only yarns with user's chosen orientation
+    const filteredInventoryArray = copyOfAllInventory.filter((fiber)=>{
+      console.log(fiber.products.fiber)
+      return fiber.products.fiber == fiberSelection;
+    });
+    setInventory(filteredInventoryArray);
+  }
   
   return (
 
     <div className="App">
       <nav>
-        <SearchBar/>
+        <SearchBar handleFilterByFiber={handleFilterByFiber}/>
         <ul>
           <li><i className="fas fa-shopping-bag"
             onClick = {slideOutMenu}></i>
