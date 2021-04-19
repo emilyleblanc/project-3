@@ -12,8 +12,7 @@ const SearchBar = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        handleFilterByFiber(userChoice)
-        console.log(userChoice)
+        handleFilterByFiber(userChoice);
     }
         
 
@@ -22,7 +21,7 @@ const SearchBar = (props) => {
         <label>Search by Fiber: </label>
         <select name="fibers" id="fibers" value={userChoice} onChange={handleUserChoice}>
             <option value="placeholder" disabled>Choose One:</option>
-            <option value="acrylic, wool">Blend</option>
+            <option value="acrylic,wool">Blend</option>
             <option value="bamboo">Bamboo</option>
             <option value="merino wool">Wool</option>
         </select>

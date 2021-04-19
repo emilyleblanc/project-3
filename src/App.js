@@ -8,7 +8,8 @@ import { useState, useEffect } from 'react'
 
 
 function App() {
-  const [inventory, setInventory] = useState([]);
+  const [allInventory, setAllInventory] = useState([]);
+  const [selectedInventory, setSelectedInventory] = useState([]);
   const [shoppingCart, setShoppingCart] = useState({});
   const [total, setTotal] = useState(0)
 
@@ -27,7 +28,8 @@ function App() {
         })
       }
     
-      setInventory(yarnBag)
+      setAllInventory(yarnBag);
+      setSelectedInventory(yarnBag);
     })
   }, []);
 
@@ -84,16 +86,14 @@ function App() {
 
   
   const handleFilterByFiber= (fiberSelection) => {
-    console.log('inventory',inventory);
-    const copyOfAllInventory = [...inventory];
-    console.log(copyOfAllInventory);
+    const copyOfAllInventory = [...allInventory];
     // filter out only yarns with user's chosen orientation
     const filteredInventoryArray = copyOfAllInventory.filter((fiber)=>{
-      console.log(fiber.products.fiber)
-      return fiber.products.fiber == fiberSelection;
+      return fiber.products.fiber === fiberSelection;
     });
-    setInventory(filteredInventoryArray);
-  }
+    setSelectedInventory(filteredInventoryArray);
+    console.log('filtered products:', filteredInventoryArray)
+  };
   
   return (
 
@@ -119,7 +119,7 @@ function App() {
           {/* MAPPING THROUGH INVENTORY AND APPLYING PROPERTIES TO ADD TO PAGE */}
           <ul>
             {
-              inventory.map((yarn) => {
+              allInventory.map((yarn) => {
                 return <DisplayInventory
                   key={yarn.uniqueKey}
                   fiber={yarn.products.fiber}
@@ -131,9 +131,11 @@ function App() {
                 />
               })
             }
-
           </ul>
         </section>
+
+
+
 
         {/* START OF SHOPPING CART SECTION */}
 
