@@ -1,27 +1,24 @@
 // SearchBar.js
+import {useState} from 'react';
 
-const SearchBar = (props) => {
-    const handleBambooClick = () => {
-        const filter = "bamboo";
-        props.handleFilter(filter);
-    }
+const SearchBar = () => {
+    const [userChoice, setUserChoice] = useState('placeholder');
 
-    const handleBlendClick = () => {
-        const filter = "acrylic,wool";
-        props.handleFilter(filter);
-    }
-
-    const handleWoolClick = () => {
-        const filter = "merino wool";
-        props.handleFilter(filter);
+    const handleUserChoice = (event) => {
+        console.log(event.target.value)
+        setUserChoice(event.target.value)
     }
 
     return (<div className="searchBar">
         <p>Search by Fiber:</p>
-        <button onClick = {handleBambooClick}>Bamboo</button>
-        <button onClick = {handleBlendClick}>Acrylic/Wool</button>
-        <button onClick = {handleWoolClick}>Wool</button>
+        <select name="fibers" id="fibers" value={userChoice} onChange={handleUserChoice}>
+            <option value="placeholder" disabled>Choose One:</option>
+            <option value="acrylic, wool">Blend</option>
+            <option value="bamboo">Bamboo</option>
+            <option value="merino wool">Wool</option>
+        </select>
     </div>)
+
 }
 
 export default SearchBar;

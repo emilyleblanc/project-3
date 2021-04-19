@@ -49,14 +49,11 @@ function App() {
       }
     }
 
-    console.log('purchase price',purchase.products.price)
-
     // THIS CODE GIVES ME THE SUM OF ALL THE SHOPPING CART ITEMS IN THE CONSOLE. NEXT STEP PASS THIS INFORMATION TO RENDER IN THE DOM
     
     const totalsAddedTogether = document.querySelectorAll('#totalPurchases');
     
      const array = []
-     console.log('array:', array)
      // turn nodeList into an array and iterate through the array 
     Array.from(totalsAddedTogether).forEach((total)=>{
      //  collect the integer values of each total in the shoppingCart
@@ -85,21 +82,19 @@ function App() {
 
   }
 
-  const handleFilter = (filter) => {
-    const filteredInventory = inventory.filter((fiber)=>{
-      let currentfiber = fiber.products.fiber;
-      return currentfiber === filter;
-    })
-    console.log('inventory:',filteredInventory)
-    setInventory(filteredInventory);
-  }
+  // const handleFilter = (filter) => {
+  //   const filteredInventory = inventory.filter((fiber)=>{
+  //     let currentfiber = fiber.products.fiber;
+  //     return currentfiber === filter;
+  //   })
+  //   setInventory(filteredInventory);
+  // }
   
   return (
 
     <div className="App">
       <nav>
-        <SearchBar
-        handleFilter = {(filter)=>handleFilter(filter)}/>
+        <SearchBar/>
         <ul>
           <li><i className="fas fa-shopping-bag"
             onClick = {slideOutMenu}></i>
