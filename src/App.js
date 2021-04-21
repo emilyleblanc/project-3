@@ -11,7 +11,8 @@ function App() {
   const [allInventory, setAllInventory] = useState([]);
   const [selectedInventory, setSelectedInventory] = useState([]);
   const [shoppingCart, setShoppingCart] = useState({});
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState(0);
+  const [inventoryCount, setInventoryCount] = useState(0);
 
 
 
@@ -43,14 +44,15 @@ function App() {
       const cartItem = newCart[purchase.uniqueKey];
       cartItem.quantity = cartItem.quantity + 1;
       cartItem.total = cartItem.total + purchase.products.price;
-      } else {
+    } else {
       newCart[purchase.uniqueKey] = {
         quantity: 1,
         inventoryItem: purchase,
         total: purchase.products.price
       }
     }
-
+    
+    setInventoryCount(inventoryCount + 1)
     // THIS CODE GIVES ME THE SUM OF ALL THE SHOPPING CART ITEMS IN THE CONSOLE. NEXT STEP PASS THIS INFORMATION TO RENDER IN THE DOM
     
     const totalsAddedTogether = document.querySelectorAll('#totalPurchases');
@@ -81,11 +83,22 @@ function App() {
   const closeMenu = () => {
     document.getElementById('shoppingCart').classList.remove('openMenu');
     document.getElementById('shoppingCart').classList.add('shoppingCart');
-
   }
 
+  const handleResetSearch = () => {
+    const copyOfAllInventory = [...allInventory];
+    setSelectedInventory(copyOfAllInventory);
+  }
   
   const handleFilterByFiber= (fiberSelection) => {
+    console.log(fiberSelection);
+    if(fiberSelection === "all"){
+      console.log('do something different here')
+      //reset inventory
+      handleResetSearch()
+      return 
+    }
+    console.log('filter')
     const copyOfAllInventory = [...allInventory];
     // filter out only yarns with user's chosen orientation
     const filteredInventoryArray = copyOfAllInventory.filter((fiber)=>{
@@ -103,6 +116,7 @@ function App() {
         <ul>
           <li><i className="fas fa-shopping-bag"
             onClick = {slideOutMenu}></i>
+            {inventoryCount}
           </li>
         </ul>
       </nav>
@@ -119,7 +133,7 @@ function App() {
           {/* MAPPING THROUGH INVENTORY AND APPLYING PROPERTIES TO ADD TO PAGE */}
           <ul>
             {
-              allInventory.map((yarn) => {
+              selectedInventory.map((yarn) => {
                 return <DisplayInventory
                   key={yarn.uniqueKey}
                   fiber={yarn.products.fiber}

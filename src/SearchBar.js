@@ -24,6 +24,7 @@ const SearchBar = (props) => {
             <option value="acrylic,wool">Blend</option>
             <option value="bamboo">Bamboo</option>
             <option value="merino wool">Wool</option>
+            <option value="all">All Inventory</option>
         </select>
         <button>Search</button>
     </form>)
