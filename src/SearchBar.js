@@ -1,27 +1,33 @@
 // SearchBar.js
+import {useState} from 'react';
 
 const SearchBar = (props) => {
-    const handleBambooClick = () => {
-        const filter = "bamboo";
-        props.handleFilter(filter);
+    const {handleFilterByFiber} = props;
+    const [userChoice, setUserChoice] = useState('placeholder');
+
+    const handleUserChoice = (event) => {
+        setUserChoice(event.target.value);
     }
 
-    const handleBlendClick = () => {
-        const filter = "acrylic,wool";
-        props.handleFilter(filter);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        handleFilterByFiber(userChoice);
     }
+        
 
-    const handleWoolClick = () => {
-        const filter = "merino wool";
-        props.handleFilter(filter);
-    }
+    return (
+    <form action=""  onSubmit={handleSubmit} className="searchBar">
+        <label>Search by Fiber: </label>
+        <select name="fibers" id="fibers" value={userChoice} onChange={handleUserChoice}>
+            <option value="placeholder" disabled>Choose One:</option>
+            <option value="acrylic,wool">Blend</option>
+            <option value="bamboo">Bamboo</option>
+            <option value="merino wool">Wool</option>
+            <option value="all">All Inventory</option>
+        </select>
+        <button>Search</button>
+    </form>)
 
-    return (<div className="searchBar">
-        <p>Search by Fiber:</p>
-        <button onClick = {handleBambooClick}>Bamboo</button>
-        <button onClick = {handleBlendClick}>Acrylic/Wool</button>
-        <button onClick = {handleWoolClick}>Wool</button>
-    </div>)
 }
 
 export default SearchBar;
