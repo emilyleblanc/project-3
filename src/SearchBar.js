@@ -6,7 +6,6 @@ const SearchBar = (props) => {
     const [userChoice, setUserChoice] = useState('placeholder');
 
     const handleUserChoice = (event) => {
-        console.log(event.target.value)
         setUserChoice(event.target.value);
     }
 

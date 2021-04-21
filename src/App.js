@@ -52,26 +52,26 @@ function App() {
       }
     }
     
-    setInventoryCount(inventoryCount + 1)
     // THIS CODE GIVES ME THE SUM OF ALL THE SHOPPING CART ITEMS IN THE CONSOLE. NEXT STEP PASS THIS INFORMATION TO RENDER IN THE DOM
     
     const totalsAddedTogether = document.querySelectorAll('#totalPurchases');
     
-     const array = []
-     // turn nodeList into an array and iterate through the array 
+    const array = []
+    // turn nodeList into an array and iterate through the array 
     Array.from(totalsAddedTogether).forEach((total)=>{
-     //  collect the integer values of each total in the shoppingCart
+      //  collect the integer values of each total in the shoppingCart
       const parsedTotal = parseInt(total.textContent)
-     //  push to the array
+      //  push to the array
       array.push(parsedTotal);
     });
- 
-   //  determine the sum of that array
-   const sum = array.reduce((accumulator, currentValue) => accumulator + currentValue, purchase.products.price);
     
-     
-     setShoppingCart(newCart)
-     setTotal(sum);
+    //  determine the sum of that array
+    const sum = array.reduce((accumulator, currentValue) => accumulator + currentValue, purchase.products.price);
+    
+    
+    setShoppingCart(newCart)
+    setTotal(sum);
+    setInventoryCount(inventoryCount + 1)
   }
 
   const slideOutMenu = () => {
@@ -91,21 +91,17 @@ function App() {
   }
   
   const handleFilterByFiber= (fiberSelection) => {
-    console.log(fiberSelection);
     if(fiberSelection === "all"){
-      console.log('do something different here')
       //reset inventory
       handleResetSearch()
       return 
     }
-    console.log('filter')
     const copyOfAllInventory = [...allInventory];
     // filter out only yarns with user's chosen orientation
     const filteredInventoryArray = copyOfAllInventory.filter((fiber)=>{
       return fiber.products.fiber === fiberSelection;
     });
     setSelectedInventory(filteredInventoryArray);
-    console.log('filtered products:', filteredInventoryArray)
   };
   
   return (
